@@ -14,6 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  */
 class CategoryController extends Controller
 {
+
     /**
      * Lists all category entities.
      *

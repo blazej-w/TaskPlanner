@@ -13,6 +13,10 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Task
 {
+    public function __toString()
+    {
+        return $this->name;
+    }
     /**
      * @var int
      *

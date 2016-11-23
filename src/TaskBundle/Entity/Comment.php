@@ -11,6 +11,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Comment
 {
+    public function __toString()
+    {
+        return $this->description;
+    }
+
     /**
      * @var int
      *
