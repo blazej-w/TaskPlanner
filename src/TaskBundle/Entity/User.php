@@ -3,6 +3,7 @@
 namespace TaskBundle\Entity;
     use FOS\UserBundle\Model\User as BaseUser;
     use Doctrine\ORM\Mapping as ORM;
+    use Symfony\Component\Validator\Constraints as Assert;
     /**
     * @ORM\Entity
     * @ORM\Table(name="fos_user")
@@ -23,15 +24,15 @@ namespace TaskBundle\Entity;
 
     }
 
-        /**
-         * @ORM\OneToMany(targetEntity="Comment", mappedBy="User")
-         */
-        private $comment;
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="User")
+     */
+    private $comment;
 
-        /**
-         * @ORM\OneToMany(targetEntity="Task", mappedBy="User")
-         */
-        private $task;
+    /**
+     * @ORM\OneToMany(targetEntity="Task", mappedBy="User")
+     */
+    private $task;
 
         
     /**
