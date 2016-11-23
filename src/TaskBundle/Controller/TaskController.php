@@ -14,6 +14,16 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  */
 class TaskController extends Controller
 {
+
+    public function AuthorizeAction($task){
+    if (
+    !$this->getUser()
+    ||
+    $this->getUser()->getId() != $task->getUser()->getId()
+    )
+    return new Response('Not allowed!');
+    }
+
     /**
      * Lists all task entities.
      *
@@ -31,6 +41,25 @@ class TaskController extends Controller
         ));
     }
 
+
+
+
+
+    /**
+    * @Route("/", name="index")
+    * @Method("GET")
+    */
+        public function indexPageAction()
+        {
+            $em = $this->getDoctrine()->getManager();
+
+            $tasks = $em->getRepository('TaskBundle:Task')->findAll();
+
+            return $this->render('indexPage.html.twig');
+        }
+
+
+
     /**
      * Creates a new task entity.
      *
@@ -44,6 +73,7 @@ class TaskController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $task->setUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($task);
             $em->flush($task);

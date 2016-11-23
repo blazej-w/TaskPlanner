@@ -13,7 +13,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $url = $this->generateUrl('task_index');
+        $url = $this->generateUrl('index');
        return new Response($this->redirect($url));
     }
 }

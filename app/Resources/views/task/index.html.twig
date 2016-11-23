@@ -5,6 +5,7 @@
 <div class="panel-heading"><h1>Tasks list</h1></div>
 </div>
     <table class = "table">
+        <h3>Tasks not completed</h3>
         <thead>
             <tr>
                 <th>Id</th>
@@ -23,7 +24,47 @@
                 <td>{{ task.name }}</td>
                 <td>{{ task.description }}</td>
                 <td>{% if task.due %}{{ task.due|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if task.completed %}Yes{% else %}No{% endif %}</td>
+                <td>{% if task.completed %}<p class="bg-success">Yes</p>{% else %}<p class="bg-danger">No</p>{% endif %}</td>
+                <td>{{ task.priority }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('task_show', { 'id': task.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('task_edit', { 'id': task.id }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('task_edit', { 'id': task.id }) }}">comment</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <table class = "table">
+        <h3>Completed tasks</h3>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Due</th>
+            <th>Completed</th>
+            <th>Priority</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for task in tasks %}
+            <tr>
+                <td><a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.id }}</a></td>
+                <td>{{ task.name }}</td>
+                <td>{{ task.description }}</td>
+                <td>{% if task.due %}{{ task.due|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if task.completed %}<p class="bg-success">Yes</p>{% else %}<p class="bg-danger">No</p>{% endif %}</td>
                 <td>{{ task.priority }}</td>
                 <td>
                     <ul>
