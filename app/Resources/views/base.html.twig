@@ -5,10 +5,11 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     </head>
     <body>
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        {{ 'Logged as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+      Logged as {{ app.user.username }}
         <a href="{{ path('fos_user_security_logout') }}">
             {{ 'logout'|trans({}, 'FOSUserBundle') }}
         </a>
