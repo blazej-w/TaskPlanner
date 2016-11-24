@@ -33,9 +33,9 @@
     </table>
     </div>
     <ul>
-        <div class=""
+        <div class="col-md-2 col-md-offset-5"><p class="text-center">
         <li>
-            <a href="{{ path('task_index') }}">Back to the list</a>
+            <a href="{{ path('task_index') }}"><strong>Back to the list of your tasks</strong></a>
         </li>
         <li>
             <a href="{{ path('task_edit', { 'id': task.id }) }}">Edit</a>
@@ -45,5 +45,7 @@
                 <input class="btn btn-primary" type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
+        </p>
+            </div>
     </ul>
 {% endblock %}

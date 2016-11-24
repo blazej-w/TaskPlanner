@@ -4,6 +4,8 @@
 <div class="panel panel-default">
 <div class="panel-heading"><h1>My Tasks list</h1></div>
 </div>
+    <h4><strong><a href="{{ path('task_new') }}"> <span class="glyphicon glyphicon-plus"></span>  Create a new task</a></strong></h4>
+    <h4><strong><a href="{{ path('category_index') }}"> <span class="glyphicon glyphicon-plus"></span>  Create a new category</a></strong></h4>
     <table class = "table">
         <h3>Tasks not completed</h3>
         <thead>
@@ -78,7 +80,10 @@
                             <a href="{{ path('task_edit', { 'id': task.id }) }}">edit</a>
                         </li>
                         <li>
-                            <a href="{{ path('comment_new', { 'id': task.id }) }}">comment2 (liczba)</a>
+                            <a href="{{ path('comment_new', { 'id': task.id }) }}">add comment</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('comment_show', { 'id': task.id }) }}">show comments</a>
                         </li>
                     </ul>
                 </td>
@@ -87,9 +92,5 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <h4><strong><a href="{{ path('task_new') }}">Create a new task</a></strong></h4>
-        </li>
-    </ul>
+
 {% endblock %}

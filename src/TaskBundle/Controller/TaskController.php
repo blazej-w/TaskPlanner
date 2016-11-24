@@ -42,6 +42,27 @@ class TaskController extends Controller
         ));
     }
 
+
+    /**
+     *
+     * @Route("/allcompleted", name="completed")
+     * @Method("GET")
+     */
+    public function  TaskCompletedFullAction()
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery("SELECT task FROM TaskBundle:Task task WHERE completed = true");
+        $results = $query->getResult();
+
+
+        return $this->render('task/index.html.twig', array(
+            'results' => $results,
+        ));
+    }
+
+
+
+
     /**
      *
      * @Route("/allcompleted", name="completed")

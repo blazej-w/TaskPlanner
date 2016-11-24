@@ -1,16 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Comment creation</h1>
-
+    <h1><p class="text-center">Write a new comment</p></h1>
+<div class="col-md-2 col-md-offset-5">
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+    <br>
+        <input class="btn btn-primary col-md-6 col-md-offset-1" type="submit" value="Create" />
     {{ form_end(form) }}
-
+<br><br>
     <ul>
         <li>
-            <a href="{{ path('comment_index') }}">Back to the list</a>
+            <a href="{{ path('comment_index') }}">Back to the list of your tasks</a>
         </li>
     </ul>
+    </div>
 {% endblock %}

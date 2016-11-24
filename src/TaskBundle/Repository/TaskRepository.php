@@ -3,6 +3,7 @@
 namespace TaskBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * TaskRepository
@@ -22,5 +23,8 @@ class TaskRepository extends EntityRepository
             'completed' => $completed
         ];
     }
+
+
+
 
 }
