@@ -5,6 +5,7 @@ namespace TaskBundle\Controller;
 use TaskBundle\Entity\Task;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -15,15 +16,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 class TaskController extends Controller
 {
 
-    public function AuthorizeAction($task)
-    {
-        if (
-            !$this->getUser()
-            ||
-            $this->getUser()->getId() != $task->getUser()->getId()
-        )
-            return new Response('Not allowed!');
-    }
 
     /**
      * Lists all task entities.
@@ -51,7 +43,8 @@ class TaskController extends Controller
     public function  TaskCompletedFullAction()
     {
         $em = $this->getEntityManager();
-        $query = $em->createQuery("SELECT task FROM TaskBundle:Task task WHERE completed = true");
+        $em->getRepository('TaskBundle:Task')->findByCompleted(true);
+        $query = $em->createQuery("SELECT task FROM TaskBundle:Task task WHERE task.completed = true");
         $results = $query->getResult();
 
 
@@ -145,6 +138,14 @@ class TaskController extends Controller
      */
     public function editAction(Request $request, Task $task)
     {
+
+        if (
+            !$this->getUser()
+            ||
+            $this->getUser()->getId() != $task->getUser()->getId()
+        )
+            return new Response('Not allowed!');
+
         $deleteForm = $this->createDeleteForm($task);
         $editForm = $this->createForm('TaskBundle\Form\TaskType', $task);
         $editForm->handleRequest($request);
@@ -170,6 +171,13 @@ class TaskController extends Controller
      */
     public function deleteAction(Request $request, Task $task)
     {
+        if (
+            !$this->getUser()
+            ||
+            $this->getUser()->getId() != $task->getUser()->getId()
+        )
+            return new Response('Not allowed!');
+
         $form = $this->createDeleteForm($task);
         $form->handleRequest($request);
 

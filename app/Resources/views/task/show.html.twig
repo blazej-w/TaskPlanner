@@ -32,9 +32,10 @@
         </tbody>
     </table>
 
+
     <div class="container">
-        {% for comment in task.comment %}
-        <p>{{ comment.task.user }} : {{ comment.description }}</p>
+        {% for comment in user.comment %}
+        <p>{{ comment.user }} : {{ comment.description }}</p>
         {% endfor %}
 
 

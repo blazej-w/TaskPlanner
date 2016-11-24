@@ -46,6 +46,12 @@ class Comment
     private $user;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Task", inversedBy="Comment")
+     * @ORM\JoinColumn(name="task_id", referencedColumnName="id")
+     */
+    private $task;
+
+    /**
      * Get id
      *
      * @return integer 

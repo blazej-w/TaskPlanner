@@ -68,6 +68,12 @@ class Task
     private $user;
 
     /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="Task")
+     */
+    private $comment;
+
+
+    /**
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="Task")
      * @ORM\JoinTable(name="task_category")
      */
