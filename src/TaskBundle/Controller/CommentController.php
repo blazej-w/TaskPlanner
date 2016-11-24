@@ -65,7 +65,6 @@ class CommentController extends Controller
         $task = $repo->find($id);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $comment->setDescription($task);
             $em = $this->getDoctrine()->getManager();
             $em->persist($comment);
             $em->flush($comment);

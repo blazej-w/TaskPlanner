@@ -40,13 +40,13 @@ class Comment
     private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="Comment")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Task", inversedBy="Comment")
+     * @ORM\ManyToOne(targetEntity="Task", inversedBy="comments")
      * @ORM\JoinColumn(name="task_id", referencedColumnName="id")
      */
     private $task;
@@ -128,5 +128,28 @@ class Comment
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set task
+     *
+     * @param \TaskBundle\Entity\Task $task
+     * @return Comment
+     */
+    public function setTask(\TaskBundle\Entity\Task $task = null)
+    {
+        $this->task = $task;
+
+        return $this;
+    }
+
+    /**
+     * Get task
+     *
+     * @return \TaskBundle\Entity\Task 
+     */
+    public function getTask()
+    {
+        return $this->task;
     }
 }

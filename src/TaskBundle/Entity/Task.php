@@ -62,24 +62,24 @@ class Task
     private $priority;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="Task")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="task")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="Task")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="task")
      */
-    private $comment;
+    private $comments;
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="Category", inversedBy="Task")
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="task")
      * @ORM\JoinTable(name="task_category")
      */
     private $category;
     public function __construct() {
-        $this->groups = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -263,5 +263,48 @@ class Task
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \TaskBundle\Entity\Comment $comment
+     * @return Task
+     */
+    public function addComment(\TaskBundle\Entity\Comment $comment)
+    {
+        $this->comment[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \TaskBundle\Entity\Comment $comment
+     */
+    public function removeComment(\TaskBundle\Entity\Comment $comment)
+    {
+        $this->comment->removeElement($comment);
+    }
+
+    /**
+     * Get comment
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

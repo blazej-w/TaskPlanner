@@ -35,7 +35,7 @@ class Category
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Task", mappedBy="Category")
+     * @ORM\ManyToMany(targetEntity="Task", mappedBy="category")
      */
     private $task;
     public function __construct() {

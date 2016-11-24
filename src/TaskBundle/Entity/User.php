@@ -25,12 +25,12 @@ namespace TaskBundle\Entity;
     }
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="User")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="user")
      */
-    private $comment;
+    private $comments;
 
     /**
-     * @ORM\OneToMany(targetEntity="Task", mappedBy="User")
+     * @ORM\OneToMany(targetEntity="Task", mappedBy="user")
      */
     private $task;
 
@@ -99,5 +99,15 @@ namespace TaskBundle\Entity;
     public function getTask()
     {
         return $this->task;
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }
