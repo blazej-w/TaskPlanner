@@ -35,6 +35,9 @@
     <div class="container">
         {% for comment in task.comments %}
         <strong>Komentarz:</strong><p> {{ comment.user }} {{ comment.description }}  </p>
+            {{ form_start(delete_form) }}
+            <input class = "btn-primary btn-group btn-group-xs" type="submit" value="delete">
+            {{ form_end(delete_form) }}
         {% endfor %}
     </div>
     </div>
