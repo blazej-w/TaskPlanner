@@ -34,7 +34,7 @@
 <br><br>
     <div class="container">
         {% for comment in task.comments %}
-        <strong>Komentarz:</strong><p> {{ comment.description }}  </p>
+        <strong>Komentarz:</strong><p> {{ comment.user }} {{ comment.description }}  </p>
         {% endfor %}
     </div>
     </div>

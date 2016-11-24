@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Category</h1>
+    <h1><p class="text-center">Category</p></h1>
 
-    <table>
+    <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -15,7 +15,7 @@
             </tr>
         </tbody>
     </table>
-
+<div class="col-md-2 col-md-offset-5"><p class="text-center">
     <ul>
         <li>
             <a href="{{ path('category_index') }}">Back to the list</a>
@@ -29,4 +29,5 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+    </div>
 {% endblock %}
