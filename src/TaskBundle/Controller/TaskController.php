@@ -15,13 +15,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 class TaskController extends Controller
 {
 
-    public function AuthorizeAction($task){
-    if (
-    !$this->getUser()
-    ||
-    $this->getUser()->getId() != $task->getUser()->getId()
-    )
-    return new Response('Not allowed!');
+    public function AuthorizeAction($task)
+    {
+        if (
+            !$this->getUser()
+            ||
+            $this->getUser()->getId() != $task->getUser()->getId()
+        )
+            return new Response('Not allowed!');
     }
 
     /**
@@ -41,9 +42,21 @@ class TaskController extends Controller
         ));
     }
 
+    /**
+     *
+     * @Route("/allcompleted", name="completed")
+     * @Method("GET")
+     */
+    public function TaskCompletedAction()
+    {
+        $em = $this->getDoctrine()->getManager();
 
+        $completed = $em->getRepository('TaskBundle:Task')->findByCompleted(true);
 
-
+        return $this->render('task/index.html.twig', array(
+            'completed' => $completed,
+        ));
+    }
 
     /**
     * @Route("/", name="index")

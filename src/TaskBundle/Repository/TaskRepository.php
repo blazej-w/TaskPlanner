@@ -13,14 +13,13 @@ use Doctrine\ORM\EntityRepository;
 class TaskRepository extends EntityRepository
 {
 
-
     public function showAllCompletedAction(){
         $repo = $this->getDoctrine()->getRepository('TaskBundle:Task');
 
-        $posts = $repo->findAllByCompleted();
+        $completed = $repo->findByCompleted(true);
 
         return [
-            'posts' => $posts
+            'completed' => $completed
         ];
     }
 

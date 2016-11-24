@@ -2,7 +2,7 @@
 
 {% block body %}
 <div class="panel panel-default">
-<div class="panel-heading"><h1>Tasks list</h1></div>
+<div class="panel-heading"><h1>My Tasks list</h1></div>
 </div>
     <table class = "table">
         <h3>Tasks not completed</h3>
@@ -35,7 +35,10 @@
                             <a href="{{ path('task_edit', { 'id': task.id }) }}">edit</a>
                         </li>
                         <li>
-                            <a href="{{ path('task_edit', { 'id': task.id }) }}">comment</a>
+                            <a href="{{ path('comment_new', { 'id': task.id }) }}">add comment</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('comment_show', { 'id': task.id }) }}">show comments</a>
                         </li>
                     </ul>
                 </td>
@@ -74,6 +77,9 @@
                         <li>
                             <a href="{{ path('task_edit', { 'id': task.id }) }}">edit</a>
                         </li>
+                        <li>
+                            <a href="{{ path('comment_new', { 'id': task.id }) }}">comment2 (liczba)</a>
+                        </li>
                     </ul>
                 </td>
             </tr>
@@ -83,7 +89,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('task_new') }}">Create a new task</a>
+            <h4><strong><a href="{{ path('task_new') }}">Create a new task</a></strong></h4>
         </li>
     </ul>
 {% endblock %}

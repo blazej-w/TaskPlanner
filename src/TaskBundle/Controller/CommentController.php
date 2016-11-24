@@ -31,24 +31,46 @@ class CommentController extends Controller
         ));
     }
 
+
+    /**
+     * Gets the number of comments.
+     *
+     * @Route("/", name="comment_number")
+     * @Method("GET")
+     */
+    public function CommentNumberAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $comment = $em->getRepository('TaskBundle:Comment')->count();
+
+        return $this->render('comment/index.html.twig', array(
+            'comment' => $comment,
+        ));
+    }
+
     /**
      * Creates a new comment entity.
      *
-     * @Route("/new", name="comment_new")
+     * @Route("/new/{id}", name="comment_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $id)
     {
         $comment = new Comment();
         $form = $this->createForm('TaskBundle\Form\CommentType', $comment);
         $form->handleRequest($request);
 
+        $repo = $this->getDoctrine()->getRepository('TaskBundle:Task');
+        $task = $repo->find($id);
+
         if ($form->isSubmitted() && $form->isValid()) {
+            $comment->setDescription($task);
             $em = $this->getDoctrine()->getManager();
             $em->persist($comment);
             $em->flush($comment);
 
-            return $this->redirectToRoute('comment_show', array('id' => $comment->getId()));
+            return $this->redirectToRoute('task_index');
         }
 
         return $this->render('comment/new.html.twig', array(
