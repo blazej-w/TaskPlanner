@@ -31,6 +31,17 @@
             </tr>
         </tbody>
     </table>
+
+    <div class="container">
+        {% for comment in task.comment %}
+        <p>{{ comment.task.user }} : {{ comment.description }}</p>
+        {% endfor %}
+
+
+
+    </div>
+
+
     </div>
     <ul>
         <div class="col-md-2 col-md-offset-5"><p class="text-center">

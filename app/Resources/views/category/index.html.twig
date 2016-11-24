@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Categories list</h1>
+<div class="panel panel-default">
+<div class="panel-heading"><h1>Categories list</h1></div></div>
     <h4><strong><a href="{{ path('category_new') }}"> <span class="glyphicon glyphicon-plus"></span>  Create a new category</a></strong></h4>
-
+    <h4><strong><a href="{{ path('task_index') }}"> <span class="glyphicon glyphicon-edit"></span>  Back to the tasks list</a></strong></h4>
 
 
     <table class="table">
