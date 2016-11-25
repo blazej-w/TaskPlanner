@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '::base.html.twig' %}
 
 {% block body %}
 <div class="panel panel-default">
@@ -20,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for task in tasks %}
+        {% for task in notcompleted %}
             <tr>
                 <td><a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.id }}</a></td>
                 <td>{{ task.name }}</td>
@@ -60,7 +60,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for task in tasks %}
+        {% for task in completed %}
             <tr>
                 <td><a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.id }}</a></td>
                 <td>{{ task.name }}</td>
