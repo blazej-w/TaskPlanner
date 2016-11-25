@@ -1,23 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1><p class="text-center">Category edit</p></h1>
-<div class="col-md-2 col-md-offset-5">
-
-    {{ form_start(edit_form) }}
+    <h1><p class="text-center">Category editor</p></h1>
+    <div class="col-md-2 col-md-offset-5">{{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+        <p class="text-center">
+            <br>
+            <input class="btn btn-primary col-md-4 col-md-offset-2" type="submit" value="Edit" />
+            {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('category_index') }}">Back to the list</a>
-        </li>
-        <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <input class="btn btn-primary col-md-6 col-md-offset-1" type="submit" value="Delete">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
-    <div>
+        </p>
+        <br><br><br>
+        <ul>
+            <a class = "text-center" href="{{ path('task_index') }}"><strong>Back to the list of your tasks</strong></a>
+            </p>
+        </ul>
+    </div>
 {% endblock %}

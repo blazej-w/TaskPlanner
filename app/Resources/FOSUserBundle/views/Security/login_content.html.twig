@@ -21,6 +21,7 @@
 
     <input type="submit" id="_submit" class="center-block btn btn-primary" name="_submit" value="{{ 'Submit'|trans }}" />
     <br>
-        <p class="text-center">Not a user yet? Register</p>
+        <p class="text-center">Not a user yet? <a href="{{ path('fos_user_registration_register') }}">Register</a> | <a href="{{ path('fos_user_resetting_request') }}">I forgot my password</a></p>
+
     </div>
 </form>

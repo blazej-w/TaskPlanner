@@ -12,6 +12,7 @@
     <body>
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
       <em>Logged as</em> <strong>{{ app.user.username }}</strong>
+        <a href="{{ path('fos_user_profile_edit') }}">edit my profile</a>|
         <a href="{{ path('fos_user_security_logout') }}">
             {{ 'logout'|trans({}, 'FOSUserBundle') }}
         </a>

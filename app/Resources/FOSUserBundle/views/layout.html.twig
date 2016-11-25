@@ -6,13 +6,12 @@
     <body>
         <div>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {{ 'Logged as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'logout'|trans({}, 'FOSUserBundle') }}
-                </a>
+    <br><br>
+
             {% else %}
                 <a href="{{ path('fos_user_security_login') }}">{{ 'Login'|trans({}, 'FOSUserBundle') }}</a>
             {% endif %}
+
         </div>
 
         {% if app.request.hasPreviousSession %}

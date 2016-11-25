@@ -4,8 +4,10 @@ namespace TaskBundle\Controller;
 
 use TaskBundle\Entity\Comment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Comment controller.
@@ -57,6 +59,7 @@ class CommentController extends Controller
      */
     public function newAction(Request $request, $id)
     {
+
         $comment = new Comment();
         $form = $this->createForm('TaskBundle\Form\CommentType', $comment);
         $form->handleRequest($request);

@@ -1,8 +1,29 @@
 {% trans_default_domain 'FOSUserBundle' %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+<div class="col-md-2 col-md-offset-5">
+<div>
+    {{ form_label(form.email, 'E-mail') }}
+    {{ form_widget(form.email) }}
+</div>
+<div>
+    {{ form_label(form.username, 'Username') }}
+    {{ form_widget(form.username) }}
+</div>
+
+<div>
+    {{ form_label(form.plainPassword.first, 'Password') }}
+    {{ form_widget(form.plainPassword.first) }}
+</div>
+<div>
+    {{ form_label(form.plainPassword.second, 'Repeat password') }}
+    {{ form_widget(form.plainPassword.second) }}
+</div>
+<div>
+    <br>
+    <input class="center-block btn btn-primary" type="submit" value="Register" />
+</div>
     </div>
 {{ form_end(form) }}

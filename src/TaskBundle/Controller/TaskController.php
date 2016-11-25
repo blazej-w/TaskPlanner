@@ -122,6 +122,13 @@ class TaskController extends Controller
      */
     public function showAction(Task $task)
     {
+        if (
+            !$this->getUser()
+            ||
+            $this->getUser()->getId() != $task->getUser()->getId()
+        )
+            return new Response('Not allowed!');
+
         $deleteForm = $this->createDeleteForm($task);
 
         return $this->render('task/show.html.twig', array(
