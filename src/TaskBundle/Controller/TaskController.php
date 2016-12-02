@@ -32,7 +32,7 @@ class TaskController extends Controller
 
         $notcompleted = $em->getRepository('TaskBundle:Task')->findByCompleted(false);
 
-        $completed = $em->getRepository('TaskBundle:Task')->findByCompleted(true);
+        $completed = $em->getRepository('TaskBundle:Task')->findByCompleted(true); // c ti
 
 
         return $this->render('task/index.html.twig', array(
@@ -43,49 +43,41 @@ class TaskController extends Controller
 
 
     }
+
+
+//    /**
+//     *
+//     * @Route("/completed", name="completed")
+//     * @Method("GET")
+//     */
+//    public function TaskCompletedAction()
+//    {
+//        $em = $this->getDoctrine()->getManager();
 //
-//        $query = $em->createQuery(
-//        'SELECT task FROM TaskBundle:task task WHERE task.completed';
-//        'SELECT user FROM TaskBundle:task user WHERE user = $thistrue';
-//        );
-
-
-    /**
-     *
-     * @Route("/completed", name="completed")
-     * @Method("GET")
-     */
-    public function TaskCompletedAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $completed = $em->getRepository('TaskBundle:Task')->findByCompleted(true);
-
-
-        return $this->render('task/index.html.twig', array(
-            'completed' => $completed,
-        ));
-
-
-
-
-    }
-
-    /**
-     *
-     * @Route("/notcompleted", name="notcompleted")
-     * @Method("GET")
-     */
-    public function TaskNotCompletedAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $notcompleted = $em->getRepository('TaskBundle:Task')->findByCompleted(false);
-
-        return $this->render('task/index.html.twig', array(
-            'notcompleted' => $notcompleted,
-        ));
-    }
+//        $completed = $em->getRepository('TaskBundle:Task')->findByCompleted(true);
+//
+//
+//        return $this->render('task/index.html.twig', array(
+//            'completed' => $completed,
+//        ));
+//
+//    }
+//
+//    /**
+//     *
+//     * @Route("/notcompleted", name="notcompleted")
+//     * @Method("GET")
+//     */
+//    public function TaskNotCompletedAction()
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $notcompleted = $em->getRepository('TaskBundle:Task')->findByCompleted(false);
+//
+//        return $this->render('task/index.html.twig', array(
+//            'notcompleted' => $notcompleted,
+//        ));
+//    }
 
 
 

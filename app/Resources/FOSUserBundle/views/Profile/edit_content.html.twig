@@ -1,10 +1,26 @@
 {% trans_default_domain 'FOSUserBundle' %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<div class="col-md-3 col-md-offset-5">
+<div class="col-md-1 col-md-offset-5">
 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+    <div>
+        {{ form_label(form.username, 'Username') }}
+        {{ form_widget(form.username) }}
+    </div>
+    <div>
+        {{ form_label(form.email, 'Email') }}
+        {{ form_widget(form.email) }}
+    </div>
+    <div>
+        {{ form_label(form.current_password, 'Password') }}
+        {{ form_widget(form.current_password) }}
+    </div>
     {{ form_widget(form) }}
     <div><br>
-        <input class= "btn btn-primary text-center type="submit" value="{{ 'Submit'|trans }}" />
+        <input class= "btn btn-primary text-center type="submit" value="{{ 'Edit'|trans }}" />
     </div>
+    <br>
+    <li>
+        <a href="{{ path('task_index') }}">Back</a>
+    </li>
     </div>
 {{ form_end(form) }}
