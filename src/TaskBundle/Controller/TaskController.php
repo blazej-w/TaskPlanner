@@ -6,7 +6,10 @@ use TaskBundle\Entity\Task;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * Task controller.
@@ -25,15 +28,14 @@ class TaskController extends Controller
      */
     public function indexAction()
     {
-
         $em = $this->getDoctrine()->getManager();
-
         $tasks = $em->getRepository('TaskBundle:Task')->findByUser($this->getUser());
 
-        $notcompleted = $em->getRepository('TaskBundle:Task')->findByCompleted(false);
+        $collection = new ArrayCollection($tasks);
 
-        $completed = $em->getRepository('TaskBundle:Task')->findByCompleted(true); // c ti
-
+        list($completed, $notcompleted) = $collection->partition(function ($key, Task $task) {
+            return $task->getCompleted();
+        });
 
         return $this->render('task/index.html.twig', array(
             'notcompleted' => $notcompleted,
@@ -42,42 +44,9 @@ class TaskController extends Controller
         ));
 
 
+
     }
 
-
-//    /**
-//     *
-//     * @Route("/completed", name="completed")
-//     * @Method("GET")
-//     */
-//    public function TaskCompletedAction()
-//    {
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $completed = $em->getRepository('TaskBundle:Task')->findByCompleted(true);
-//
-//
-//        return $this->render('task/index.html.twig', array(
-//            'completed' => $completed,
-//        ));
-//
-//    }
-//
-//    /**
-//     *
-//     * @Route("/notcompleted", name="notcompleted")
-//     * @Method("GET")
-//     */
-//    public function TaskNotCompletedAction()
-//    {
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $notcompleted = $em->getRepository('TaskBundle:Task')->findByCompleted(false);
-//
-//        return $this->render('task/index.html.twig', array(
-//            'notcompleted' => $notcompleted,
-//        ));
-//    }
 
 
 
@@ -131,12 +100,15 @@ class TaskController extends Controller
      */
     public function showAction(Task $task)
     {
-        if (
+        if
+        (
             !$this->getUser()
             ||
             $this->getUser()->getId() != $task->getUser()->getId()
+
         )
-            return new Response('Not allowed!');
+
+        return new Response('Not allowed!');
 
         $deleteForm = $this->createDeleteForm($task);
 
