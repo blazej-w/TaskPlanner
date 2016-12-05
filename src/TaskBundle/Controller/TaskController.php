@@ -93,11 +93,29 @@ class TaskController extends Controller
     }
 
     /**
+     * Count the number of comments
+     *
+     * @Route("/", name="comment_index")
+     * @Method("GET")
+     */
+    public function countCommentsAction()
+    {
+        $query = $this->createQueryBuilder()
+            ->select('COUNT(comment.id)')
+            ->from('task_planner', 'comment')
+            ->where('comment = :id')
+            ->setParameter('id', $myID)
+            ->getQuery();
+
+        $totalcomments = $query->getSingleScalarResult();
+    }
+    /**
      * Finds and displays a task entity.
      *
      * @Route("/{id}", name="task_show")
      * @Method("GET")
      */
+
     public function showAction(Task $task)
     {
         if
@@ -126,12 +144,17 @@ class TaskController extends Controller
      */
     public function editAction(Request $request, Task $task)
     {
-
+        if ($task->getCompleted() == true) {                            //unable to edit completed tasks
+            return $this->redirect($this->generateUrl('task_index', [
+                'id' => $task->getId()
+            ]));
+        }
         if (
             !$this->getUser()
             ||
             $this->getUser()->getId() != $task->getUser()->getId()
         )
+
             return new Response('Not allowed!');
 
         $deleteForm = $this->createDeleteForm($task);
@@ -159,6 +182,13 @@ class TaskController extends Controller
      */
     public function deleteAction(Request $request, Task $task)
     {
+        if ($task->getCompleted() == true) {                            //unable to delete completed tasks
+            return $this->redirect($this->generateUrl('task_index', [
+                'id' => $task->getId()
+            ]));
+        }
+
+
         if (
             !$this->getUser()
             ||

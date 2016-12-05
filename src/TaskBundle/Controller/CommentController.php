@@ -34,6 +34,8 @@ class CommentController extends Controller
     }
 
 
+
+
     /**
      * Gets the number of comments.
      *

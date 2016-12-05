@@ -37,6 +37,9 @@
                             <a href="{{ path('task_edit', { 'id': task.id }) }}">edit</a>
                         </li>
                         <li>
+                            <a href="{{ path('task_delete', { 'id': task.id }) }}">delete</a>
+                        </li>
+                        <li>
                             <a href="{{ path('comment_new', { 'id': task.id }) }}">add comment</a>
                         </li>
                     </ul>
@@ -73,9 +76,14 @@
                         <li>
                             <a href="{{ path('task_show', { 'id': task.id }) }}">show</a>
                         </li>
+                        {% if task.completed %}{% else %}
                         <li>
                             <a href="{{ path('task_edit', { 'id': task.id }) }}">edit</a>
                         </li>
+                            <li>
+                                <a href="{{ path('task_delete', { 'id': task.id }) }}">delete</a>
+                            </li>
+                        <{% endif %}
                         <li>
                             <a href="{{ path('comment_new', { 'id': task.id }) }}">add comment</a>
                         </li>

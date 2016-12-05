@@ -54,6 +54,7 @@ class Task
      */
     private $completed;
 
+
     /**
      * @var string
      *
@@ -273,7 +274,7 @@ class Task
      */
     public function addComment(\TaskBundle\Entity\Comment $comment)
     {
-        $this->comment[] = $comment;
+        $this->comments[] = $comment;
 
         return $this;
     }
@@ -285,7 +286,7 @@ class Task
      */
     public function removeComment(\TaskBundle\Entity\Comment $comment)
     {
-        $this->comment->removeElement($comment);
+        $this->comments->removeElement($comment);
     }
 
     /**
@@ -295,7 +296,7 @@ class Task
      */
     public function getComment()
     {
-        return $this->comment;
+        return $this->comments;
     }
 
     /**
