@@ -202,6 +202,12 @@ class TaskController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $comments = $em->getRepository('TaskBundle:Comment')->findByTask($task->getId());    //Removing all comments for task. It enables removing task with existing comments.
+            for ($i = 0; $i < count($comments); $i++) {
+                $em->remove($comments[$i]);
+            }
+
             $em->remove($task);
             $em->flush($task);
         }

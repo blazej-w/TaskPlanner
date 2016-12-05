@@ -147,13 +147,13 @@ class CategoryController extends Controller
 
             $tasks = $em->getRepository('TaskBundle:Task')->findByCategory($category->getId());    //Removing all tasks for category. It enables removing category with existing tasks.
 
-//            for ($i = 0; $i < count($tasks); $i++) {
-//                $comments = $em->getRepository('TaskBundle:Comment')->findByTask($tasks[$i]->getId());    //Removing all comments for task. It enables removing task with existing comments.
-//                for ($j = 0; $j < count($comments); $j++) {
-//                    $em->remove($comments[$j]);
-//                }
-//                $em->remove($tasks[$i]);
-//            }
+            for ($i = 0; $i < count($tasks); $i++) {
+                $comments = $em->getRepository('TaskBundle:Comment')->findByTask($tasks[$i]->getId());    //Removing all comments for task. It enables removing task with existing comments.
+                for ($j = 0; $j < count($comments); $j++) {
+                    $em->remove($comments[$j]);
+                }
+                $em->remove($tasks[$i]);
+            }
 
 
 
