@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f45f63f1-fd82-4ba1-9964-b21ab27f5b2a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/task/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/task/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TaskBundle/Controller/CategoryController.php" afterPath="$PROJECT_DIR$/src/TaskBundle/Controller/CategoryController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TaskBundle/Controller/CommentController.php" afterPath="$PROJECT_DIR$/src/TaskBundle/Controller/CommentController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TaskBundle/Controller/TaskController.php" afterPath="$PROJECT_DIR$/src/TaskBundle/Controller/TaskController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TaskBundle/Entity/Task.php" afterPath="$PROJECT_DIR$/src/TaskBundle/Entity/Task.php" />
     </list>
     <ignored path="TaskPlanner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/task/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="87" column="98" selection-start-line="87" selection-start-column="98" selection-end-line="87" selection-end-column="98" />
+            <state relative-caret-position="126">
+              <caret line="7" column="96" selection-start-line="7" selection-start-column="96" selection-end-line="7" selection-end-column="96" />
               <folding />
             </state>
           </provider>
@@ -71,8 +66,8 @@
       <file leaf-file-name="TaskController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TaskBundle/Controller/TaskController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="858">
-              <caret line="188" column="9" selection-start-line="188" selection-start-column="9" selection-end-line="188" selection-end-column="9" />
+            <state relative-caret-position="660">
+              <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
               <folding>
                 <element signature="e#41#68#0#PHP" expanded="true" />
               </folding>
@@ -80,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CategoryController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CategoryController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TaskBundle/Controller/CategoryController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="104" column="6" selection-start-line="104" selection-start-column="6" selection-end-line="104" selection-end-column="6" />
+            <state relative-caret-position="318">
+              <caret line="97" column="51" selection-start-line="97" selection-start-column="51" selection-end-line="97" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -767,12 +762,12 @@
       <workItem from="1480235682381" duration="2220000" />
       <workItem from="1480685035659" duration="19095000" />
       <workItem from="1480790049865" duration="1994000" />
-      <workItem from="1480855045394" duration="13917000" />
+      <workItem from="1480855045394" duration="14549000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115185000" />
+    <option name="totallyTimeSpent" value="115817000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1366" y="24" width="1680" height="1026" extended-state="6" />
@@ -1167,28 +1162,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/task/index.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Controller/CategoryController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="87" column="98" selection-start-line="87" selection-start-column="98" selection-end-line="87" selection-end-column="98" />
+        <state relative-caret-position="318">
+          <caret line="97" column="51" selection-start-line="97" selection-start-column="51" selection-end-line="97" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TaskBundle/Controller/TaskController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="858">
-          <caret line="188" column="9" selection-start-line="188" selection-start-column="9" selection-end-line="188" selection-end-column="9" />
+        <state relative-caret-position="660">
+          <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
           <folding>
             <element signature="e#41#68#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Controller/CategoryController.php">
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/task/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="104" column="6" selection-start-line="104" selection-start-column="6" selection-end-line="104" selection-end-column="6" />
+        <state relative-caret-position="126">
+          <caret line="7" column="96" selection-start-line="7" selection-start-column="96" selection-end-line="7" selection-end-column="96" />
           <folding />
         </state>
       </provider>
