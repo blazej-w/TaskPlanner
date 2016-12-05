@@ -5,7 +5,10 @@ namespace TaskBundle\Controller;
 use TaskBundle\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 
 /**
  * Category controller.
@@ -24,8 +27,7 @@ class CategoryController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $categories = $em->getRepository('TaskBundle:Category')->findByAuthor();
+        $categories = $em->getRepository('TaskBundle:Category')->findByUser($this->getUser()); // prevents from viewing other users' categories
 
         return $this->render('category/index.html.twig', array(
             'categories' => $categories,
@@ -45,6 +47,7 @@ class CategoryController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $category->setUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($category);
             $em->flush($category);
@@ -67,6 +70,16 @@ class CategoryController extends Controller
     public function showAction(Category $category)
     {
 
+        if
+        (
+            !$this->getUser()  //unable to show if created by other user
+            ||
+            $this->getUser()->getId() != $category->getUser()->getId()
+
+        )
+
+            return new Response('Not allowed!');
+
         $deleteForm = $this->createDeleteForm($category);
 
         return $this->render('category/show.html.twig', array(
@@ -86,7 +99,7 @@ class CategoryController extends Controller
         if (                                                             // unable to edit if created by other user
             !$this->getUser()
             ||
-            $this->getUser()->getId() != $category->getName()->getId()
+            $this->getUser()->getId() != $category->getUser()->getId()
         )
 
             return new Response('Not allowed!');
@@ -122,6 +135,7 @@ class CategoryController extends Controller
         )
 
             return new Response('Not allowed!');
+
         $form = $this->createDeleteForm($category);
         $form->handleRequest($request);
 

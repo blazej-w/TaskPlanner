@@ -92,30 +92,30 @@ class TaskController extends Controller
         ));
     }
 
-    /**
-     * Count the number of comments
-     *
-     * @Route("/", name="comment_index")
-     * @Method("GET")
-     */
-    public function countCommentsAction()
-    {
-        $query = $this->createQueryBuilder()
-            ->select('COUNT(comment.id)')
-            ->from('task_planner', 'comment')
-            ->where('comment = :id')
-            ->setParameter('id', $myID)
-            ->getQuery();
+//    /**
+//     * Count the number of comments
+//     *
+//     * @Route("/", name="comment_index")
+//     * @Method("GET")
+//     */
+//    public function countCommentsAction()
+//    {
+//        $query = $this->createQueryBuilder()
+//            ->select('COUNT(comment.id)')
+//            ->from('task_planner', 'comment')
+//            ->where('comment = :id')
+//            ->setParameter('id', $myID)
+//            ->getQuery();
+//
+//        $totalcomments = $query->getSingleScalarResult();
+//    }
 
-        $totalcomments = $query->getSingleScalarResult();
-    }
     /**
      * Finds and displays a task entity.
      *
      * @Route("/{id}", name="task_show")
      * @Method("GET")
      */
-
     public function showAction(Task $task)
     {
         if
