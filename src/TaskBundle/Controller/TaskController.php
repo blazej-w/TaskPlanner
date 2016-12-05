@@ -78,7 +78,7 @@ class TaskController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $task->setUser($this->getUser());
+            $task->setUser($this->getUser()); // sets the author of the task
             $em = $this->getDoctrine()->getManager();
             $em->persist($task);
             $em->flush($task);

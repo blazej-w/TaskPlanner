@@ -42,12 +42,13 @@ class CategoryController extends Controller
      */
     public function newAction(Request $request)
     {
+
         $category = new Category();
         $form = $this->createForm('TaskBundle\Form\CategoryType', $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $category->setUser($this->getUser());
+            $category->setUser($this->getUser());  // sets the author of the category
             $em = $this->getDoctrine()->getManager();
             $em->persist($category);
             $em->flush($category);
@@ -103,6 +104,7 @@ class CategoryController extends Controller
         )
 
             return new Response('Not allowed!');
+
         $deleteForm = $this->createDeleteForm($category);
         $editForm = $this->createForm('TaskBundle\Form\CategoryType', $category);
         $editForm->handleRequest($request);

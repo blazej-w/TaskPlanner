@@ -36,22 +36,22 @@ class CommentController extends Controller
 
 
 
-    /**
-     * Gets the number of comments.
-     *
-     * @Route("/", name="comment_number")
-     * @Method("GET")
-     */
-    public function CommentNumberAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $comment = $em->getRepository('TaskBundle:Comment')->count();
-
-        return $this->render('comment/index.html.twig', array(
-            'comment' => $comment,
-        ));
-    }
+//    /**
+//     * Gets the number of comments.
+//     *
+//     * @Route("/", name="comment_number")
+//     * @Method("GET")
+//     */
+//    public function CommentNumberAction()
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $comment = $em->getRepository('TaskBundle:Comment')->count();
+//
+//        return $this->render('comment/index.html.twig', array(
+//            'comment' => $comment,
+//        ));
+//    }
 
     /**
      * Creates a new comment entity.
@@ -92,6 +92,16 @@ class CommentController extends Controller
      */
     public function showAction(Comment $comment)
     {
+
+        if
+        (
+            !$this->getUser()  //unable to show if created by other user
+            ||
+            $this->getUser()->getId() != $comment->getUser()->getId()
+
+        )
+            return new Response('Not allowed!');
+
         $deleteForm = $this->createDeleteForm($comment);
 
         return $this->render('comment/show.html.twig', array(
@@ -108,6 +118,16 @@ class CommentController extends Controller
      */
     public function editAction(Request $request, Comment $comment)
     {
+        if
+        (
+            !$this->getUser()  //unable to delete if created by other user
+            ||
+            $this->getUser()->getId() != $comment->getUser()->getId()
+
+        )
+            return new Response('Not allowed!');
+
+
         $deleteForm = $this->createDeleteForm($comment);
         $editForm = $this->createForm('TaskBundle\Form\CommentType', $comment);
         $editForm->handleRequest($request);
