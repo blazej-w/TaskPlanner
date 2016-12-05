@@ -34,6 +34,10 @@ namespace TaskBundle\Entity;
      */
     private $task;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="user")
+     */
+    private $category;
         
     /**
      * Add comment
@@ -43,7 +47,7 @@ namespace TaskBundle\Entity;
      */
     public function addComment(\TaskBundle\Entity\Comment $comment)
     {
-        $this->comment[] = $comment;
+        $this->comments[] = $comment;
 
         return $this;
     }
@@ -55,7 +59,7 @@ namespace TaskBundle\Entity;
      */
     public function removeComment(\TaskBundle\Entity\Comment $comment)
     {
-        $this->comment->removeElement($comment);
+        $this->comments->removeElement($comment);
     }
 
     /**
@@ -65,7 +69,7 @@ namespace TaskBundle\Entity;
      */
     public function getComment()
     {
-        return $this->comment;
+        return $this->comments;
     }
 
     /**
@@ -109,5 +113,38 @@ namespace TaskBundle\Entity;
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Add category
+     *
+     * @param \TaskBundle\Entity\Category $category
+     * @return User
+     */
+    public function addCategory(\TaskBundle\Entity\Category $category)
+    {
+        $this->category[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param \TaskBundle\Entity\Category $category
+     */
+    public function removeCategory(\TaskBundle\Entity\Category $category)
+    {
+        $this->category->removeElement($category);
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

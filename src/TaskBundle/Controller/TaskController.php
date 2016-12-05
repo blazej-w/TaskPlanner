@@ -149,7 +149,8 @@ class TaskController extends Controller
                 'id' => $task->getId()
             ]));
         }
-        if (
+
+        if (                                                             // unable to edit if created by other user
             !$this->getUser()
             ||
             $this->getUser()->getId() != $task->getUser()->getId()
@@ -190,7 +191,7 @@ class TaskController extends Controller
 
 
         if (
-            !$this->getUser()
+            !$this->getUser()                                         // unable to delete if created by other user
             ||
             $this->getUser()->getId() != $task->getUser()->getId()
         )

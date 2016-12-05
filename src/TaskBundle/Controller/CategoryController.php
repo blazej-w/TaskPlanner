@@ -25,7 +25,7 @@ class CategoryController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em->getRepository('TaskBundle:Category')->findAll();
+        $categories = $em->getRepository('TaskBundle:Category')->findByAuthor();
 
         return $this->render('category/index.html.twig', array(
             'categories' => $categories,
@@ -83,6 +83,13 @@ class CategoryController extends Controller
      */
     public function editAction(Request $request, Category $category)
     {
+        if (                                                             // unable to edit if created by other user
+            !$this->getUser()
+            ||
+            $this->getUser()->getId() != $category->getName()->getId()
+        )
+
+            return new Response('Not allowed!');
         $deleteForm = $this->createDeleteForm($category);
         $editForm = $this->createForm('TaskBundle\Form\CategoryType', $category);
         $editForm->handleRequest($request);
@@ -108,10 +115,13 @@ class CategoryController extends Controller
      */
     public function deleteAction(Request $request, Category $category)
     {
-//        if (!$this->getUser() || $this->getUser()->getId() != $category->getName()->getId()) {
-//            return $this->redirect($this->generateUrl('category_index'));
-//        }
+        if (                                                             // unable to delete if created by other user
+            !$this->getUser()
+            ||
+            $this->getUser()->getId() != $category->getUser()->getId()
+        )
 
+            return new Response('Not allowed!');
         $form = $this->createDeleteForm($category);
         $form->handleRequest($request);
 

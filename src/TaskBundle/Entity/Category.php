@@ -43,6 +43,13 @@ class Category
     }
 
     /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="category")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+
+    /**
      * Get id
      *
      * @return integer 
@@ -106,5 +113,28 @@ class Category
     public function getTask()
     {
         return $this->task;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \TaskBundle\Entity\User $user
+     * @return Category
+     */
+    public function setUser(\TaskBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \TaskBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
