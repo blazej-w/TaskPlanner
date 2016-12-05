@@ -75,13 +75,11 @@ class Task
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="Category", inversedBy="task")
-     * @ORM\JoinTable(name="task_category")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="task")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
-    public function __construct() {
-        $this->comments = new ArrayCollection();
-    }
+
 
     /**
      * Get id

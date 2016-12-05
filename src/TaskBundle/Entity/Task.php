@@ -75,13 +75,11 @@ class Task
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="Category", inversedBy="task")
-     * @ORM\JoinTable(name="task_category")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="task")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
-    public function __construct() {
-        $this->comments = new ArrayCollection();
-    }
+
 
     /**
      * Get id
@@ -307,5 +305,25 @@ class Task
     public function getComments()
     {
         return $this->comments;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set category
+     *
+     * @param \TaskBundle\Entity\Category $category
+     * @return Task
+     */
+    public function setCategory(\TaskBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
     }
 }

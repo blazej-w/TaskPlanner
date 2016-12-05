@@ -35,12 +35,10 @@ class Category
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Task", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Task", mappedBy="category")
      */
     private $task;
-    public function __construct() {
-        $this->users = new ArrayCollection();
-    }
+
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="category")
@@ -113,5 +111,28 @@ class Category
     public function getTask()
     {
         return $this->task;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \TaskBundle\Entity\User $user
+     * @return Category
+     */
+    public function setUser(\TaskBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \TaskBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

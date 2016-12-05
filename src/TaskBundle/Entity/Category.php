@@ -35,12 +35,10 @@ class Category
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Task", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Task", mappedBy="category")
      */
     private $task;
-    public function __construct() {
-        $this->users = new ArrayCollection();
-    }
+
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="category")
@@ -137,4 +135,12 @@ class Category
     {
         return $this->user;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->task = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 }

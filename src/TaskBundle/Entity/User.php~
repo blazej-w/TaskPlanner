@@ -114,4 +114,37 @@ namespace TaskBundle\Entity;
     {
         return $this->comments;
     }
+
+    /**
+     * Add category
+     *
+     * @param \TaskBundle\Entity\Category $category
+     * @return User
+     */
+    public function addCategory(\TaskBundle\Entity\Category $category)
+    {
+        $this->category[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param \TaskBundle\Entity\Category $category
+     */
+    public function removeCategory(\TaskBundle\Entity\Category $category)
+    {
+        $this->category->removeElement($category);
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
 }
