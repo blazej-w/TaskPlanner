@@ -1,7 +1,7 @@
 TaskPlanner
 ===========
 
-The Symfony2 Project started on 23rd November 2016. Made using FOSUserBundle, MySQL (Doctrine), and simple bootstrap.
+The Symfony2 Project started on 23rd November 2016. Made using FOSUserBundle, MySQL (Doctrine) and simple bootstrap.
 
 Project includes MySQL database with many to one relations (comments to user and task, user to task and comment, task to categories). 
 
