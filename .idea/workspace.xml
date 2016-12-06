@@ -57,8 +57,8 @@
       <file leaf-file-name="Comment.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TaskBundle/Entity/Comment.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
+            <state relative-caret-position="485">
+              <caret line="41" column="7" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -749,12 +749,12 @@
       <workItem from="1480235682381" duration="2220000" />
       <workItem from="1480685035659" duration="19095000" />
       <workItem from="1480790049865" duration="1994000" />
-      <workItem from="1480855045394" duration="28523000" />
+      <workItem from="1480855045394" duration="29118000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129791000" />
+    <option name="totallyTimeSpent" value="130386000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1366" y="24" width="1680" height="1026" extended-state="6" />
@@ -1173,8 +1173,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TaskBundle/Entity/Comment.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
+        <state relative-caret-position="485">
+          <caret line="41" column="7" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
           <folding />
         </state>
       </provider>
