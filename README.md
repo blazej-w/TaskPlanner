@@ -10,5 +10,5 @@ A logged user can create categories, edit them and is also able to create and ed
 The project includes full registration/login system using FOSUserBundle and twig templates.
 
 
-
+![alt tag](https://github.com/blazej-w/TaskPlanner/blob/master/screenshot.png?)
  
